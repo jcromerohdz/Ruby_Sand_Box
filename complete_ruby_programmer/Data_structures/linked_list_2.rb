@@ -58,8 +58,6 @@ class LinkedList
       before_current.next_node=this_nod
       #point new node to the old current node
       this_nod.next_node=after_current
-
-
       end
     end
 
@@ -111,5 +109,5 @@ list.add_at(0, 13)
 puts list.get(2)
 puts list.get(3)
 
-# list.remove(3)
-# puts "Element is not there or has been remove :" if list.get(3) == nil
+list.remove(3)
+puts "Element is not there or has been remove :" if list.get_node(3) == nil
