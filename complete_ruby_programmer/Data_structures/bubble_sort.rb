@@ -43,7 +43,6 @@ def bubble_sort_by(arr)
 
   puts '--------------'
   if arr.class.to_s == "Array"
-    p arr.class
     output = arr.join(', ')  
     puts "[#{output}]"
   else
@@ -53,6 +52,6 @@ def bubble_sort_by(arr)
 end
 
 p bubble_sort([4, 3, 78, 2, 0, 2])
-u = "som"
-bubble_sort_by(%w[hey hello hi]) { |left, right| left.length - right.length }
+u = nil
+bubble_sort_by(u) { |left, right| left.length - right.length }
 
