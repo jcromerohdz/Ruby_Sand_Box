@@ -34,8 +34,8 @@ def bubble_sort_by(arr)
           arr[i], arr[i+1] = arr[i+1], arr[i]
           swap += 1
         end
+      end
     end
-  end
   else
     arr.sort
   end
@@ -46,6 +46,4 @@ end
 
 p bubble_sort([4, 3, 78, 2, 0, 2])
 
-bubble_sort_by(['hey', 'hello', 'hi']) { 
-  |left, right| left.length - right.length 
-}
+bubble_sort_by(['hey', 'hello', 'hi']) {|left, right| left.length - right.length}
