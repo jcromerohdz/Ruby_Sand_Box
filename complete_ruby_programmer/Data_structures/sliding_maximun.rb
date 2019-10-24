@@ -55,6 +55,8 @@ def get_max(deque)
     deque.topFront
 end
 
+array.each_cons(k).map(&:max)
+
   # res = []
   #   for i in 0..array.length - k do
   #       max = array[i]

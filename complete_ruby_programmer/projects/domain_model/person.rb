@@ -20,7 +20,7 @@ class Person
        (!last_name.nil? && last_name.length > 0)
       true
     else
-      puts "Cannot save file. Person attributes not valid"
+      print "Person attributes not valid"
       return false
     end
   end
@@ -52,6 +52,9 @@ class Person
 
   def save
     # filename = "#{person_id}_file.csv"
+    unless valid?
+      puts " Cannot save file."
+    end
     save_file = CSV.open(filename, "w") do |csv|
       csv << [first_name, last_name]
     end
