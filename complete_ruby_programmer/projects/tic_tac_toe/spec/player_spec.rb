@@ -8,13 +8,13 @@ RSpec.describe 'Player' do
     end
 
     it "does not raise an error when initialized with a valid input hash" do
-      input = {name: "John Smith"}
+      input = {color: "X", name: "John Smith"}
       expect { Player.new(input)}.to_not raise_error
     end
 
     describe "#name" do
       it "returns the player's name" do
-        input = {name: "John Smith"}
+        input = {color: "X", name: "John Smith"}
         player = Player.new(input)
         expect(player.name).to eq "John Smith"
       end
