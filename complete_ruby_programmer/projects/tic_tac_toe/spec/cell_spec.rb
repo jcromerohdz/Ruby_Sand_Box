@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require_relative '../lib/cell.rb'
 
@@ -9,7 +10,7 @@ RSpec.describe 'Cell' do
     end
 
     it "can be initialized with a value of 'x'" do
-      cell = Cell.new("X")
+      cell = Cell.new('X')
       expect(cell.value).to eq 'X'
     end
   end
