@@ -36,8 +36,28 @@ def cross_reference(log_line)
   users = CSV.open('data/users.csv') do |csv|
     csv.readlines
   end
-  pp users
+
+  users.map! do |line|
+    if line.length == 3
+      if line[0].nil?
+        line[0] = "Unknown"
+      end
+
+      if line[1].nil?
+        line[1] = "Unknown"
+      end
+    else
+      if line[0].match(/[a-zA-Z0-9@.]*/)
+        email = line[0]
+        line[0] = "Unknown"
+        line.push("Unknown")
+        line.push(email)
+      end
+    end
+    line
+  end
+  users
 end
 
-cross_reference("")
+pp cross_reference("")
 # pp parse_log
