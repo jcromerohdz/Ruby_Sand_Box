@@ -11,11 +11,12 @@ def parse_log
   end
 
   user_data = signup_log_lines.map do |line|
-    parsed_line = line.split('" "').last
-    determine_browser(parsed_line)
+    parsed_array = line.split('" "')
+    email = extract_email(parsed_array.first)
+    user_agent_string = parsed_array.last
+    browser = determine_browser(user_agent_string)
+    [email, browser]
   end
-
-  puts user_data
 end
 
 def determine_browser(user_agent)
@@ -25,4 +26,9 @@ def determine_browser(user_agent)
   "Other"
 end
 
-parse_log
+def extract_email(log_line)
+  email = log_line.match(/signup\?email\=([a-zA-Z0-9@.]*) HTTP\//)
+  email.captures.first
+end
+
+pp parse_log
