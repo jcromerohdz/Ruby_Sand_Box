@@ -1,3 +1,4 @@
+require 'csv'
 
 def parse_log
 
@@ -31,4 +32,12 @@ def extract_email(log_line)
   email.captures.first
 end
 
-pp parse_log
+def cross_reference(log_line)
+  users = CSV.open('data/users.csv') do |csv|
+    csv.readlines
+  end
+  pp users
+end
+
+cross_reference("")
+# pp parse_log
