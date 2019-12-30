@@ -18,6 +18,12 @@ def parse_log
     browser = determine_browser(user_agent_string)
     [email, browser]
   end
+
+  cross_reference_data = user_data.map do |line|
+    cross_reference(line)
+  end
+
+  cross_reference_data
 end
 
 def determine_browser(user_agent)
@@ -56,8 +62,16 @@ def cross_reference(log_line)
     end
     line
   end
-  users
+
+  matiching_users = users.select do |line|
+    log_line[0] == line[2]
+  end
+  matching_user = matiching_users.first
+  { first_name: matching_user[1],
+    last_name: matching_user[0],
+    email: matching_user[2],
+    browser: log_line[1]}
 end
 
-pp cross_reference("")
-# pp parse_log
+#pp cross_reference("")
+pp parse_log
