@@ -1,4 +1,7 @@
-#
+# Given a string, return a new string with the reversed order of characters.
+# example reverse('apple') === 'elppa'
+# reverse('hello') === 'elppa'
+# reverse('Greetings!') === '!sgniteerG'
 
 def reverse(str)
   reversed = ''
@@ -10,6 +13,6 @@ end
 
 
 puts reverse('apple')
-puts reverse('olleh')
+puts reverse('hello')
 puts reverse('Greetings!')
 
