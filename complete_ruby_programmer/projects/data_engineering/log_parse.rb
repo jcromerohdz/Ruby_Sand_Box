@@ -1,13 +1,25 @@
 require 'csv'
 
-def parse_log
+def get_files
 
-  filename = 'data/access-log-20190521-211058.log'
-  access_log_lines = File.open(filename, 'r') do |f|
-    f.readlines
+  matching_files = Dir["data/access-log-*-*.log"]
+
+  parsing_results = matching_files.map do |file|
+    access_log_lines = File.open(file, 'r') do |f|
+      f.readlines
+    end
+
+    parse_log(access_log_lines)
   end
 
-  signup_log_lines = access_log_lines.select do |line|
+  # filename = 'data/access-log-20190521-211058.log'
+
+  pp parsing_results
+end
+
+def parse_log(log_lines)
+
+  signup_log_lines = log_lines.select do |line|
     line.include?('/signup?email=')
   end
 
@@ -74,4 +86,4 @@ def cross_reference(log_line)
 end
 
 #pp cross_reference("")
-pp parse_log
+get_files
